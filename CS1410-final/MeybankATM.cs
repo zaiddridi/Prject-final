@@ -19,7 +19,7 @@ namespace CS1410_final
         private const int maxTries = 3;
         private const decimal minimum_kept_amt = 20;
 
-        //todo: A transaction class with transaction amount can replace these two variable.
+        
         private static decimal transaction_amt;
 
         private static List<BankAccount> _accountList;
@@ -136,7 +136,7 @@ namespace CS1410_final
                 Console.WriteLine("\nNote: Actual ATM system will accept user's ATM card to validate");
                 Console.Write("and read card number, bank account number and bank account status. \n\n");
                 //Console.Write("Enter ATM Card Number: ");
-                //inputAccount.CardNumber = Convert.ToInt32(Console.ReadLine());
+               
                 inputAccount.CardNumber = Utility.GetValidIntInputAmt("ATM Card Number");
 
                 Console.Write("Enter 6 Digit PIN: ");
@@ -196,7 +196,7 @@ namespace CS1410_final
 
             Console.WriteLine("\nNote: Actual ATM system will just let you ");
             Console.Write("place bank notes into ATM machine. \n\n");
-            //Console.Write("Enter amount: " + ATMScreen.cur);
+   
             transaction_amt = Utility.GetValidDecimalInputAmt("amount");
 
             System.Console.Write("\nCheck and counting bank notes.");
@@ -229,11 +229,10 @@ namespace CS1410_final
 
         public void MakeWithdrawal(BankAccount account)
         {
-            Console.WriteLine("\nNote: For GUI or actual ATM system, user can ");
-            Console.Write("choose some default withdrawal amount or custom amount. \n\n");
+           // ("\nNote: For actual ATM system, user can ");
+            Console.WriteLine("user can choose some default withdrawal amount or custom amount. \n\n");
 
-            // Console.Write("Enter amount: " + ATMScreen.cur);
-            // transaction_amt = ATMScreen.ValidateInputAmount(Console.ReadLine());
+            
 
             transaction_amt = Utility.GetValidDecimalInputAmt("amount");
 
@@ -257,9 +256,7 @@ namespace CS1410_final
                     TransactionDate = DateTime.Now
                 };
                 InsertTransaction(account, transaction);
-                // Add transaction record - End
-
-                // Another method to update account balance.
+              
                 account.Balance = account.Balance - transaction_amt;
 
                 Utility.PrintMessage($"Please collect your money. You have successfully withdraw {Utility.FormatAmount(transaction_amt)}", true);
@@ -278,7 +275,7 @@ namespace CS1410_final
            
             else
             {
-                // Check if receiver's bank account number is valid.
+               
                 var selectedBankAccountReceiver = (from b in _accountList
                                                    where b.AccountNumber == vMThirdPartyTransfer.RecipientBankAccountNumber
                                                    select b).FirstOrDefault();
@@ -303,7 +300,7 @@ namespace CS1410_final
                     
                     bankAccount.Balance = bankAccount.Balance - vMThirdPartyTransfer.TransferAmount;
 
-                    // Update balance amount (Receiver)
+                    
                     selectedBankAccountReceiver.Balance = selectedBankAccountReceiver.Balance + vMThirdPartyTransfer.TransferAmount;
                 }
             }
