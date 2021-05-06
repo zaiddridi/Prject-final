@@ -28,7 +28,22 @@ namespace NUnitTestProject
             Int64 expected = 55545;
             Assert.IsTrue(expected.Equals(actif));
         }
-      
+       [Test]
+        public void Test3()
+        {
+            var actif = Utility.GetValidDecimalInputAmt("0000");
+            Int64 expected =0000;
+            Assert.IsTrue(expected.Equals(actif));
+        }
+        [Test]
+        public void Test4()
+        {
+            String message = "this is a test";
+            var actif = Utility.GetRawInput( message);
+            var expected = message;
+            Assert.IsTrue(expected.Equals(actif));
+        }
+        
         
     }
     
