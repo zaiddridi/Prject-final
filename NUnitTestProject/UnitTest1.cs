@@ -44,7 +44,14 @@ namespace NUnitTestProject
             Assert.IsTrue(expected.Equals(actif));
         }
         
-        
+        [Test]
+        public void Test5()
+        {
+            String msg="this is test";
+            var actif = Utility.GetValidIntInputAmt(msg);
+            Int64 expected = 55545;
+            Assert.IsTrue(expected.Equals(actif));
+        }
     }
     
         
